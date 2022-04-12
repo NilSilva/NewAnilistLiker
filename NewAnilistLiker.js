@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         New anilist liker
-// @version      0.1.0
+// @version      0.2.0
 // @description  Add a like all button to anilist user pages
 // @author       Nil Silva
 // @match        https://anilist.co/user/*
@@ -33,10 +33,22 @@
         }
     }
 
-
+    
     var button = document.createElement("Button");
     button.innerHTML = "like";
-    button.style = "bottom:10px;right:10px;position:fixed;z-index:9999999"
+
+    button.style = `
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: #0b1622;
+    color: white;
+    bottom: 10px;
+    right: 10px;
+    position: fixed;
+    z-index: 9999999;
+    width: 45px;
+    height:45px`
+
     button.onclick = like;
     document.body.appendChild(button);
 })();
