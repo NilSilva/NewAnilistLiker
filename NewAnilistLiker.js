@@ -1,5 +1,7 @@
 // ==UserScript==
 // @name         New anilist liker
+// @updateURL    https://nilsilva.github.io/NewAnilistLiker/NewAnilistLiker.js
+// @downloadURL  https://nilsilva.github.io/NewAnilistLiker/NewAnilistLiker.js
 // @version      0.2.0
 // @description  Add a like all button to anilist user pages
 // @author       Nil Silva
