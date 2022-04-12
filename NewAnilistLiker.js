@@ -41,7 +41,7 @@
 
     button.style = `
     border-radius: 50%;
-    border: 2px solid white;
+    border: 2px solid red;
     background-color: #0b1622;
     color: white;
     bottom: 10px;
