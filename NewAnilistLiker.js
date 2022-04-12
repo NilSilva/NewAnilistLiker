@@ -1,37 +1,38 @@
 // ==UserScript==
 // @name         New anilist liker
-// @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.1.0
 // @description  Add a like all button to anilist user pages
 // @author       Nil Silva
 // @match        https://anilist.co/user/*
-// @icon         https://www.google.com/s2/favicons?domain=anilist.co
 // @grant        none
 // ==/UserScript==
 
-(function() {
+(function () {
     'use strict';
 
-    function triggerMostButtons(jNode) {
-        triggerMouseEvent(jNode, "click");
-    }
+    function like() {
+        var username = document.getElementsByClassName("links")[0].getElementsByClassName("link")[1].href;
+        var likes = document.querySelectorAll(".button:not(.liked)");
 
-    function triggerMouseEvent(node, eventType) {
-        console.log(node)
-        console.log(eventType)
-        var clickEvent = document.createEvent('MouseEvents');
-        clickEvent.initEvent(eventType, true, true);
-        node.dispatchEvent(clickEvent);
-    }
+        function eventFire(el, etype) {
+            if (el.fireEvent) {
+                el.fireEvent('on' + etype);
+            } else {
+                var evObj = document.createEvent('Events');
+                evObj.initEvent(etype, true, false);
+                el.dispatchEvent(evObj);
+            }
+        }
 
-    function like(){
-        const divs = document.querySelectorAll(".like-wrap.activity .button:not(.liked):nth-child(2)")
+        console.log('There are ' + likes.length + ' activities.')
 
-        for (const div of divs) {
-            div.click();
-            triggerMostButtons(div);
+        for (let elt of likes) {
+            if (username != elt.closest('.wrap').getElementsByClassName("name")[0].href) {
+                eventFire(elt, 'click');
+            }
         }
     }
+
 
     var button = document.createElement("Button");
     button.innerHTML = "like";
