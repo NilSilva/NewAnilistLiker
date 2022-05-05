@@ -2,7 +2,7 @@
 // @name         New anilist liker
 // @updateURL    https://nilsilva.github.io/NewAnilistLiker/NewAnilistLiker.js
 // @downloadURL  https://nilsilva.github.io/NewAnilistLiker/NewAnilistLiker.js
-// @version      0.4.0
+// @version      1.0
 // @description  Add a like all button to anilist user pages
 // @author       Nil Silva
 // @match        https://anilist.co/user/*
@@ -28,9 +28,15 @@
 
         console.log('There are ' + likes.length + ' activities.')
 
-        for (let elt of likes) {
+        for (let [i, elt] of likes.entries()) {
+            console.log(i)
             if (username != elt.closest('.wrap').getElementsByClassName("name")[0].href) {
                 eventFire(elt, 'click');
+            }
+
+            if(i === 34){
+                alert('Liked 35 activities. ' + (likes.length - i) + ' remaining. Please wait a minute before going again.')
+                break;
             }
         }
     }
